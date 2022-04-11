@@ -11,3 +11,5 @@ DROP TABLE IF EXISTS guids;
 CREATE TABLE IF NOT EXISTS guids(
     unique_id VARCHAR(32) NOT NULL UNIQUE PRIMARY KEY
 );
+
+CREATE INDEX idx_uid ON guids(unique_id);
