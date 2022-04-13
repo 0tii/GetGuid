@@ -1,15 +1,12 @@
 import mysql from "mysql2";
 
-const conn = mysql.createPool({
+const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     database: 'getguid',
     waitForConnections: true
 });
 
-/**
- * A dynamic connection from a MySQL connection pool
- */
-const connection = conn.promise();
+const connection = pool.promise();
 
 export default connection;
