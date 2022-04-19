@@ -1,15 +1,16 @@
 {
-  "name": "getguid",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mysql2": "^2.3.3"
-  }
+    "name": "getguid",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "",
+    "main": "start.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.3",
+        "mysql2": "^2.3.3"
+    }
 }
