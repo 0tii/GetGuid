@@ -12,4 +12,4 @@ const pool = mysql.createPool({
  */
 const asyncPool = pool.promise();
 
-export default asyncPool;
+export default pool;
