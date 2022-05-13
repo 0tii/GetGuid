@@ -17,7 +17,7 @@ app.get(cfg.getPath, async (req, res) => {
         return res.send(guid);
     else{
         res.status(500)
-        return res.send(genError);
+        return res.send(genError(500, "Maximum amount of collisions reached during generation of guid. Something went wrong."));
     }
 });
 

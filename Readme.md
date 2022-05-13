@@ -27,6 +27,14 @@ Returns a json object with the following structure
 }
 ```
 
+So far only one server-side error is propagated back to the client, with an error code 500. As time goes on this will change.
+```json
+{
+    "code": 500,
+    "error": "error message"
+}
+```
+
 ## Limitations
 
 **GetGuid does not provide:**
@@ -39,6 +47,7 @@ Both of which are *TODO* depending on motivation
 ## Planned Features
 
 - Authentication / API Keys
+- Error handling / propagation system
 - Rate Limiting
 - Request specification (eg. request bulk)
 - Request specific GUID standard
