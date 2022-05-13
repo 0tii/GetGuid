@@ -1,11 +1,12 @@
 import express from 'express';
 import { generateGuidObject, genError } from './lib/gen.js';
+import cfg from './cfg/config.js';
 
 const app = express();
 
-app.get('/api/', async (req, res) => {
+app.get(cfg.guidPath, async (req, res) => {
     let guid = await generateGuidObject();
-    console.log(guid.guid);
+    
     if(guid.guid != '-1')
         return res.send(guid);
     else{
@@ -14,4 +15,4 @@ app.get('/api/', async (req, res) => {
     }
 });
 
-app.listen(80, () => console.log('listening on default port 80...'));
+app.listen(cfg.listenPath, () => console.log(`listening on port ${cfg.listenPort}...`));
