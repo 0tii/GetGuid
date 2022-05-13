@@ -7,8 +7,9 @@ License: MIT
 export default {
     dbHost: 'localhost',
     dbUser: 'root',
+    dbPort: '/var/run/mysqld/mysqld.sock', //for unix
 
     maxConsecutiveCollisions: 10,  //consecutive collisions should never be a thing, if this threshold (> 1) is exceeded, there is an error in the code.
     getPath: "/guid",
-    listenPort: 80
+    listenPort: 3000
 }

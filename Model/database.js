@@ -11,6 +11,7 @@ import cfg from '../cfg/config.js';
 const pool = mysql.createPool({
     host: cfg.dbHost,
     user: cfg.dbUser,
+    port: cfg.dbPort,
     database: 'getguid',
     waitForConnections: true
 });
