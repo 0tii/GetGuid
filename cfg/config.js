@@ -8,7 +8,7 @@ export default {
     dbHost: 'localhost',
     dbUser: 'root',
 
-    maxConsecutiveCollisions: 10,
+    maxConsecutiveCollisions: 10,  //consecutive collisions should never be a thing, if this threshold (> 1) is exceeded, there is an error in the code.
     getPath: "/guid",
     listenPort: 80
 }

@@ -10,12 +10,18 @@ import cfg from './cfg/config.js';
 
 const app = express();
 
+if (cfg.getPath != '/')
+    app.get('/', (req, res) => {
+        res.status(404);
+        return res.send("No content for api root.");
+    });
+
 app.get(cfg.getPath, async (req, res) => {
     let guid = await generateGuidObject();
 
-    if(guid.guid != '-1')
+    if (guid.guid != '-1')
         return res.send(guid);
-    else{
+    else {
         res.status(500)
         return res.send(genError(500, "Maximum amount of collisions reached during generation of guid. Something went wrong."));
     }
