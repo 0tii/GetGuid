@@ -21,4 +21,4 @@ app.get(cfg.getPath, async (req, res) => {
     }
 });
 
-app.listen(cfg.listenPath, () => console.log(`listening on port ${cfg.listenPort}...`));
+app.listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
