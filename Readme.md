@@ -1,6 +1,19 @@
 # 🆔 GetGuid Web API 
 
-GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in line with the v4 standard (pseudo-random).
+GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in line with the v4 standard (pseudo-random) and optimized for multi-access through connection pooling the MySQL database. The API is exposed through ``Express``, DB pool and queries are powered by ``mysql2`` and `util.promisify`. Pseudo-Random guids are generated using `crypto` and `Buffer`.
+
+## Setup
+
+- Set up the database with the ``/Database/setup.sql`` file in your MySQL console.
+```
+> source C:\[...]\setup.sql
+```
+
+That will set up the db, table and a few debug-guids.
+
+- Adjust ``/cfg/config.js`` to your desired specifications.
+
+- Start the node process and make a request.
 
 ## How collision free?
 
