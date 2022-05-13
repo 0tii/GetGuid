@@ -5,10 +5,12 @@ License: MIT
 © Daniel H. Rauhut 2022
 */
 import mysql from "mysql2";
+import cfg from '../cfg/config.js';
+
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
+    host: cfg.dbHost,
+    user: cfg.dbUser,
     database: 'getguid',
     waitForConnections: true
 });

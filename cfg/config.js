@@ -5,7 +5,10 @@ License: MIT
 © Daniel H. Rauhut 2022
 */
 export default {
+    dbHost: 'localhost',
+    dbUser: 'root',
+
     maxConsecutiveCollisions: 10,
-    guidPath: "/guid",
+    getPath: "/guid",
     listenPort: 80
 }

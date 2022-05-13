@@ -10,7 +10,7 @@ import cfg from './cfg/config.js';
 
 const app = express();
 
-app.get(cfg.guidPath, async (req, res) => {
+app.get(cfg.getPath, async (req, res) => {
     let guid = await generateGuidObject();
 
     if(guid.guid != '-1')
