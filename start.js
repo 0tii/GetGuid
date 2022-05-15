@@ -13,7 +13,7 @@ const app = express();
 if (cfg.getPath != '/')
     app.get('/', (req, res) => {
         res.status(404);
-        return res.send("No content for api root.");
+        return res.send({ "error": "No content for api root." });
     });
 
 app.get(cfg.getPath, async (req, res) => {

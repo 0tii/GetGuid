@@ -12,6 +12,7 @@ const pool = mysql.createPool({
     host: cfg.dbHost,
     user: cfg.dbUser,
     port: cfg.dbPort,
+    password: cfg.dbPassword,
     database: 'getguid',
     waitForConnections: true
 });
