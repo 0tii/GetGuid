@@ -4,7 +4,8 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 ## Demo
 
-``GET`` [api.rauhut.me/guid](https://api.rauhut.me/guid) *or visit in your browser*.
+**(!SSL/HTTPS coming soon!)**
+``GET`` > [api.rauhut.me/guid](http://api.rauhut.me/guid) *or visit in your browser*.
 
 ## Setup
 
