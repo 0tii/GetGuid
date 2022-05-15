@@ -50,16 +50,18 @@ So far only one server-side error is propagated back to the client, with an erro
 
 ## Limitations
 
-**GetGuid does not provide:**
+**GetGuid does not *(yet)* provide the following core API features:**
 
 - Authentication / API Keys
 - Rate Limiting
+- SSL / HTTPS
 
 Both of which are *TODO* depending on motivation
 
 ## Planned Features
 
 - Authentication / API Keys
+- SSL/HTTPS 
 - Error handling / propagation system
 - Rate Limiting
 - Request specification (eg. request bulk)
