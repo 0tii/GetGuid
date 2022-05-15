@@ -2,6 +2,8 @@
 
 GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in line with the v4 standard (pseudo-random) and optimized for multi-access through connection pooling the MySQL database. The API is exposed through ``Express``, DB pool and queries are powered by ``mysql2`` and `util.promisify`. Pseudo-Random guids are generated using `crypto` and `Buffer`.
 
+For a live demo just GET [api.rauhut.me/guid](api.rauhut.me/guid)
+
 ## Setup
 
 - Set up the database with the ``/Database/setup.sql`` file in your MySQL console.
