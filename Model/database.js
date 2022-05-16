@@ -17,9 +17,4 @@ const pool = mysql.createPool({
     waitForConnections: true
 });
 
-/**
- * Promise based pool instance
- */
-const asyncPool = pool.promise();
-
 export default pool;
