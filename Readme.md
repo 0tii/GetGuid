@@ -6,7 +6,9 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 **(!SSL/HTTPS coming soon!)**
 
-``GET`` > [api.rauhut.me/guid](http://api.rauhut.me/guid) *or visit in your browser*.
+``GET`` > [api.rauhut.me/guid](http://api.rauhut.me/guid) *~~or visit in your browser~~ (Now requires API keys)* .
+
+*Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*
 
 ## Setup
 
@@ -58,17 +60,17 @@ So far only one server-side error is propagated back to the client, with an erro
 
 **GetGuid does not *(yet)* provide the following core API features:**
 
-- Authentication / API Keys
-- Rate Limiting
+~~- Authentication / API Keys~~
+~~- Rate Limiting~~
 - SSL / HTTPS
 
-Both of which are *TODO* depending on motivation
+All of which are *TODO* depending on motivation
 
 ## Planned Features
 
-- Authentication / API Keys
+~~- Authentication / API Keys~~
 - SSL/HTTPS 
 - Error handling / propagation system
-- Rate Limiting
+~~- Rate Limiting~~
 - Request specification (eg. request bulk)
 - Request specific GUID standard
