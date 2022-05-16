@@ -132,16 +132,22 @@ A not-regularly-updated list of errors:
 **~~GetGuid does not *(yet)* provide the following core API features:~~**
 
 ~~- Authentication / API Keys~~
+
 ~~- Rate Limiting~~
+
 ~~- SSL / HTTPS~~
 
 ## Planned Features
 
 ~~- Authentication / API Keys~~
+
 ~~- SSL/HTTPS~~
+
 - Startup check | **WIP**
 - Key generation endpoint with permission / auth
 - Error handling / propagation system
+
 ~~- Rate Limiting~~
+
 - Request specification (eg. request bulk)
 - Request specific GUID standard
