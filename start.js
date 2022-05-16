@@ -9,7 +9,12 @@ import { generateGuidObject, genError } from './lib/gen.js';
 import cfg from './cfg/config.js';
 import { verifyApiKey } from './lib/verify_key.js';
 import { checkRateLimit } from './lib/rate_limit.js';
+import { bootCheck } from './lib/boot_check.js';
 
+//check run requirements
+await bootCheck();
+
+//init
 const app = express();
 
 //unprotected root

@@ -47,7 +47,7 @@ Api Keys must be submitted as a `API-Key` header.
 
 ### Rate Limiting
 
-GetGuid has a configurable rate limit (`cfg/config.js`) consisting of `requestsPerWindow` and `secondsPerWindow`. It is by default configured for `20 requests per window and 60 seconds per window` therefore `20 requests per second`.
+GetGuid has a configurable rate limit (`cfg/config.js`) consisting of `requestsPerWindow` and `secondsPerWindow`. It is by default configured for `20 requests per window and 60 seconds per window` therefore `20 requests per minute`.
 
 ## Format
 
@@ -92,7 +92,8 @@ All of which are *TODO* depending on motivation
 ## Planned Features
 
 ~~- Authentication / API Keys~~
-- SSL/HTTPS 
+- SSL/HTTPS
+- Startup check
 - Error handling / propagation system
 ~~- Rate Limiting~~
 - Request specification (eg. request bulk)
