@@ -9,6 +9,10 @@ License: MIT
 This is the default config file shipped. rename this to config.js for it to take effect.
 */
 export default {
+    useSslCert: true,
+    privKeyName: '',
+    certName: '',
+
     dbHost: 'localhost',
     dbUser: 'root',
     dbPassword: '',
@@ -19,5 +23,7 @@ export default {
     listenPort: 3000,
 
     requestsPerWindow: 20,
-    secondsPerWindow: 60
+    secondsPerWindow: 60,
+
+    advancedDebug: true
 }

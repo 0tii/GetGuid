@@ -5,11 +5,14 @@ License: MIT
 © Daniel H. Rauhut 2022
 */
 import express from 'express';
+import fs from 'fs';
+import https from 'https';
 import { generateGuidObject, genError } from './lib/gen.js';
 import cfg from './cfg/config.js';
 import { verifyApiKey } from './lib/verify_key.js';
 import { checkRateLimit } from './lib/rate_limit.js';
 import { bootCheck } from './lib/boot_check.js';
+import { createPrivateKey } from 'crypto';
 
 //check run requirements
 await bootCheck();
@@ -78,4 +81,10 @@ app.get(cfg.getPath, async (req, res) => {
     }
 });
 
-app.listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
+if (cfg.useSslCert)
+    https.createServer({
+        key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
+        cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
+    }, app).listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
+else
+    app.listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
