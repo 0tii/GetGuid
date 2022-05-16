@@ -29,6 +29,7 @@ GetGuid keeps an indexed MySQL database table of all generated GUIDs. Upon gener
 
 ## How to GetGuid?
 
+### Making requests
 A simple get-request
 ```
 GET [host]:[listenPort]/[getPath]
@@ -38,8 +39,19 @@ for example
 ```
 GET localhost:3500/guid
 ```
+### Authentication
+
+GetGuid now uses API Key authentication. API Keys need to be issued to users before they can use this service. There is a public API Key for the example service I am hosting: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD`.
+
+Api Keys must be submitted as a `API-Key` header.
+
+### Rate Limiting
+
+GetGuid has a configurable rate limit (`cfg/config.js`) consisting of `requestsPerWindow` and `secondsPerWindow`. It is by default configured for `20 requests per window and 60 seconds per window` therefore `20 requests per second`.
 
 ## Format
+
+### Response
 
 Returns a json object with the following structure
 ```json
@@ -47,14 +59,25 @@ Returns a json object with the following structure
     "guid": "23703c80-bbe9-4f59-50f6-ef30bb399e5"
 }
 ```
+### Errors
 
-So far only one server-side error is propagated back to the client, with an error code 500. As time goes on this will change.
+Errors are propagated back to the user in the following format:
 ```json
 {
     "code": 500,
     "error": "error message"
 }
 ```
+
+A not-regularly-updated list of errors:
+
+- 500 - Maximum amount of collisions reached (Most probably a logic-error on the server side)
+- 500 - Server error while validating API Key
+- 429 - Too many requests - rate limit reached
+- 401 - Unauthorized invalid key
+- 401 - Unauthorized no auth / no key provided
+- 401 - Unauthorized API key is expired
+- 404 - No content for api root
 
 ## Limitations
 

@@ -19,5 +19,5 @@ export default {
     listenPort: 3000,
 
     requestsPerWindow: 20,
-    windowInSeconds: 60
+    secondsPerWindow: 60
 }

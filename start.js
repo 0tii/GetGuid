@@ -29,30 +29,33 @@ Middleware section
 // Header:
 // [API-Key | value]
 app.use(async (req, res, next) => {
-    switch(await verifyApiKey(req)){
+    switch (await verifyApiKey(req)) {
         case 1:
             next(); //authenticated
             break;
         case 0:
-            res.status(401).json({error: "Unauthorized - Invalid Key."});
+            res.status(401).json({ error: "Unauthorized - Invalid Key." });
             break;
         case -1:
-            res.status(401).json({error: "Unauthorized - No Auth header / No Key provided."});
+            res.status(401).json({ error: "Unauthorized - No Auth header / No Key provided." });
             break;
         case -2:
-            res.status(500).json({error: "Server error while validating API Key."});
+            res.status(500).json({ error: "Server error while validating API Key." });
+            break;
+        case -3:
+            res.status(401).json({ error: "Unauthorized - API Key is expired." });
             break;
     }
 });
 
 // Rate limiting
 // 20 requests per second
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     const key = req.get('API-Key');
-    if(checkRateLimit(key))
+    if (checkRateLimit(key))
         next();
     else
-        res.status(429).json({error: "Too many requests - You are exceeding the allowed rate limit."});
+        res.status(429).json({ error: "Too many requests - You are exceeding the allowed rate limit." });
 });
 
 /*
