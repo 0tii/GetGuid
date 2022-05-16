@@ -58,9 +58,12 @@ GetGuid keeps an indexed MySQL database table of all generated GUIDs. Upon gener
 ## How to GetGuid?
 
 ### Making requests
+
+#### Get a guid
+
 A simple get-request
 ```
-GET [host]:[httpPort/httpsPort]/[getPath]
+GET [host]:[httpPort/httpsPort]/guid
 ```
 
 for example
@@ -68,6 +71,20 @@ for example
 GET http://localhost:3000/guid
 GET https://localhost:3443/guid
 ```
+
+#### Get multiple guids
+
+The maximum amount of guids to query is configurable through `config.js`.
+```
+GET [host]:[httpPort/httpsPort]/guids/[amount]
+```
+
+for example
+```
+GET http://localhost:3000/guids/5
+GET https://localhost:3443/guids/10
+```
+
 ### Authentication
 
 GetGuid now uses API Key authentication. API Keys need to be issued to users before they can use this service. There is a public API Key for the example service I am hosting: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD`.
@@ -107,6 +124,8 @@ A not-regularly-updated list of errors:
 - 401 - Unauthorized no auth / no key provided
 - 401 - Unauthorized API key is expired
 - 404 - No content for api root
+- 400 - Invalid parameter must be an integer
+- 400 - Invalid parameter exceeds allowed maximum
 
 ## Limitations
 

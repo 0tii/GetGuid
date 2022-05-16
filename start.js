@@ -90,8 +90,8 @@ app.get('/guids/:count(*)', async (req, res) => {
     }
 
     if(amount > cfg.maxGuids){
-        req.status(400);
-        return res.send({error: "Invalid parameter - exceeds allowed max number of guids"});
+        res.status(400);
+        return res.send({error: "Invalid parameter - exceeds allowed maximum"});
     }
 
     let guids = await generateMultiGuid(amount);
