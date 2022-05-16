@@ -19,7 +19,7 @@ export default {
     dbPort: '/var/run/mysqld/mysqld.sock', //for windows use 3306
 
     maxConsecutiveCollisions: 10,  //consecutive collisions should never be a thing, if this threshold (> 1) is exceeded, there is an error in the code.
-    getPath: "/guid",
+    maxGuids: 10,
     httpPort: 3000,
     httpsPort: 3443,
 

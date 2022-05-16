@@ -7,7 +7,7 @@ License: MIT
 import express from 'express';
 import fs from 'fs';
 import https from 'https';
-import { generateGuidObject, genError } from './lib/gen.js';
+import { generateGuidObject, generateMultiGuid, genError } from './lib/generate_guid.js';
 import cfg from './cfg/config.js';
 import { verifyApiKey } from './lib/verify_key.js';
 import { checkRateLimit } from './lib/rate_limit.js';
@@ -56,8 +56,7 @@ app.use(async (req, res, next) => {
     }
 });
 
-// Rate limiting
-// 20 requests per second
+// Bucket Token based rate limiting as per config rates
 app.use((req, res, next) => {
     const key = req.get('API-Key');
     if (checkRateLimit(key))
@@ -70,7 +69,7 @@ app.use((req, res, next) => {
 Routes
 */
 
-app.get(cfg.getPath, async (req, res) => {
+app.get("/guid", async (req, res) => {
     let guid = await generateGuidObject();
 
     if (guid.guid != '-1')
@@ -79,6 +78,35 @@ app.get(cfg.getPath, async (req, res) => {
         res.status(500)
         return res.send(genError(500, "Maximum amount of collisions reached during generation of guid. Something went wrong."));
     }
+});
+
+app.get('/guids/:count(*)', async (req, res) => {
+    let amount = req.params.count;
+    let x;
+
+    if (!(isNaN(amount) ? !1 : (x = parseFloat(amount), (0 | x) === x))) {
+        res.status(400);
+        return res.send({ error: "Invalid parameter - must be an integer." });
+    }
+
+    if(amount > cfg.maxGuids){
+        req.status(400);
+        return res.send({error: "Invalid parameter - exceeds allowed max number of guids"});
+    }
+
+    let guids = await generateMultiGuid(amount);
+
+    if (guids != '-1')
+        return res.send(guids);
+    else {
+        res.status(500)
+        return res.send(genError(500, "Maximum amount of collisions reached during generation of guids. Something went wrong."));
+    }
+});
+
+app.get("(*)", (req, res)=>{
+    res.status(400);
+    return res.send({error: "Invalid resource. There is nothing here."});
 });
 
 if (cfg.useSSL)

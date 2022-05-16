@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS guids(
     unique_id VARCHAR(35) NOT NULL UNIQUE PRIMARY KEY
 );
 
-CREATE INDEX idx_uid ON guids(unique_id);
+CREATE INDEX IF NOT EXISTS idx_uid ON guids(unique_id);
 
 INSERT INTO guids (unique_id) VALUES ('00000000-0000-0000-0000-00000000000');
 INSERT INTO guids (unique_id) VALUES ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa');
@@ -31,6 +31,6 @@ CREATE TABLE IF NOT EXISTS api_keys(
     valid_until DATETIME NOT NULL
 );
 
-CREATE INDEX idx_key ON api_keys(api_key);
+CREATE INDEX IF NOT EXISTS  idx_key ON api_keys(api_key);
 
 INSERT INTO api_keys (api_key, key_name, valid_until) VALUES ('rwXGu1ZkuWPr5Bpy8.83LD2N1zf4qi.k', 'master key', 20251230000000);

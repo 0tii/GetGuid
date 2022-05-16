@@ -25,6 +25,8 @@ That will set up the db, tables and a few debug-guids as well as a debug api key
 
 ### The config
 
+The default config is located in ``/cfg`` as `_config.js`. This must be copied to `config.js` and adjusted to your specifications. Without `config.js` the service will not be able to run!
+
 ```javascript
 {
     useSSL: true, //starts a https server alongside the standard http
