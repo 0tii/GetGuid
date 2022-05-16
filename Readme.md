@@ -4,24 +4,50 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 ## Demo
 
-**(!SSL/HTTPS coming soon!)**
+**Both http and https supported**
 
-``GET`` > [api.rauhut.me/guid](http://api.rauhut.me/guid) *~~or visit in your browser~~ (Now requires API keys)* .
+``GET`` > [api.rauhut.me/guid](https://api.rauhut.me/guid) *~~or visit in your browser~~ (Now requires API key)* .
 
 *Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*
 
 ## Setup
 
-- Set up the database with the ``/Database/setup.sql`` file in your MySQL console.
+- Set up the database with the ``/Database/setup.sql`` file in your MySQL console:
 ```
 > source C:\[...]\setup.sql
 ```
 
-That will set up the db, table and a few debug-guids.
+That will set up the db, tables and a few debug-guids as well as a debug api key.
 
 - Adjust ``/cfg/config.js`` to your desired specifications.
 
 - Start the node process and make a request.
+
+### The config
+
+```json
+{
+    useSSL: true, //starts a https server alongside the standard http
+    privKeyName: '', //name of the SSL private key file in /sslcert
+    certName: '', //name of the SSL certificate name in /sslcert
+
+    dbHost: 'localhost', //mysql database host
+    dbUser: 'root', //mysql user
+    dbPassword: '', //mysql user password
+    dbPort: '/var/run/mysqld/mysqld.sock', //for windows use 3306
+
+    maxConsecutiveCollisions: 10,  //consecutive collisions should never occur, if this threshold (> 1) is exceeded, there is an error in the code.
+    getPath: "/guid", //the URI parameter to address the API
+    httpPort: 3000, //port the http server listens on
+    httpsPort: 3443, //port the https server listens on
+
+    requestsPerWindow: 20,
+    secondsPerWindow: 60, //default: 20 requests per 60 seconds
+
+    advancedDebug: true //outputs some more detailed errors in console
+}
+
+```
 
 ## How collision free?
 
@@ -32,12 +58,13 @@ GetGuid keeps an indexed MySQL database table of all generated GUIDs. Upon gener
 ### Making requests
 A simple get-request
 ```
-GET [host]:[listenPort]/[getPath]
+GET [host]:[httpPort/httpsPort]/[getPath]
 ```
 
 for example
 ```
-GET localhost:3500/guid
+GET http://localhost:3000/guid
+GET https://localhost:3443/guid
 ```
 ### Authentication
 
@@ -81,19 +108,18 @@ A not-regularly-updated list of errors:
 
 ## Limitations
 
-**GetGuid does not *(yet)* provide the following core API features:**
+**~~GetGuid does not *(yet)* provide the following core API features:~~**
 
 ~~- Authentication / API Keys~~
 ~~- Rate Limiting~~
-- SSL / HTTPS
-
-All of which are *TODO* depending on motivation
+~~- SSL / HTTPS~~
 
 ## Planned Features
 
 ~~- Authentication / API Keys~~
-- SSL/HTTPS
-- Startup check
+~~- SSL/HTTPS~~
+- Startup check | **WIP**
+- Key generation endpoint with permission / auth
 - Error handling / propagation system
 ~~- Rate Limiting~~
 - Request specification (eg. request bulk)
