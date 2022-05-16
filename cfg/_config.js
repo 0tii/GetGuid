@@ -9,7 +9,7 @@ License: MIT
 This is the default config file shipped. rename this to config.js for it to take effect.
 */
 export default {
-    useSslCert: true,
+    useSSL: true,
     privKeyName: '',
     certName: '',
 
@@ -20,7 +20,8 @@ export default {
 
     maxConsecutiveCollisions: 10,  //consecutive collisions should never be a thing, if this threshold (> 1) is exceeded, there is an error in the code.
     getPath: "/guid",
-    listenPort: 3000,
+    httpPort: 3000,
+    httpsPort: 3443,
 
     requestsPerWindow: 20,
     secondsPerWindow: 60,

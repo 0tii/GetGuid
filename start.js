@@ -81,10 +81,10 @@ app.get(cfg.getPath, async (req, res) => {
     }
 });
 
-if (cfg.useSslCert)
+if (cfg.useSSL)
     https.createServer({
         key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
         cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
-    }, app).listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
-else
-    app.listen(cfg.listenPort, () => console.log(`listening on port ${cfg.listenPort}...`));
+    }, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
+
+app.listen(cfg.httpPort, () => console.log(`[http] listening on port ${cfg.httpPort}...`));
