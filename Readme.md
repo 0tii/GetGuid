@@ -25,7 +25,7 @@ That will set up the db, tables and a few debug-guids as well as a debug api key
 
 ### The config
 
-```json
+```javascript
 {
     useSSL: true, //starts a https server alongside the standard http
     privKeyName: '', //name of the SSL private key file in /sslcert
