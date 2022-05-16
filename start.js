@@ -8,6 +8,7 @@ import express from 'express';
 import { generateGuidObject, genError } from './lib/gen.js';
 import cfg from './cfg/config.js';
 import { verifyApiKey } from './lib/verify_key.js';
+import { checkRateLimit } from './lib/rate_limit.js';
 
 const app = express();
 
@@ -18,8 +19,15 @@ if (cfg.getPath != '/')
         return res.send({ "error": "No content for api root." });
     });
 
-//protect all other api paths
-// Header: API-Key 
+/*
+Middleware section
+- Key Authentication
+- Rate limiting
+*/
+
+// Key Authentication
+// Header:
+// [API-Key | value]
 app.use(async (req, res, next) => {
     switch(await verifyApiKey(req)){
         case 1:
@@ -36,6 +44,20 @@ app.use(async (req, res, next) => {
             break;
     }
 });
+
+// Rate limiting
+// 20 requests per second
+app.use((req, res, next)=>{
+    const key = req.get('API-Key');
+    if(checkRateLimit(key))
+        next();
+    else
+        res.status(429).json({error: "Too many requests - You are exceeding the allowed rate limit."});
+});
+
+/*
+Routes
+*/
 
 app.get(cfg.getPath, async (req, res) => {
     let guid = await generateGuidObject();
