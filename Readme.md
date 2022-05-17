@@ -6,7 +6,7 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 **Both http and https supported**
 
-``GET`` > [api.rauhut.me/guid](https://api.rauhut.me/guid) *~~or visit in your browser~~ (Now requires API key)* .
+``GET`` > [exampleapi.rauhut.me/guid](https://exampleapi.rauhut.me/guid)
 
 *Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*
 
