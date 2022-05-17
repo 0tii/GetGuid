@@ -139,9 +139,10 @@ A not-regularly-updated list of errors:
 
 - ~~Authentication / API Keys~~
 - ~~SSL/HTTPS~~
-- Startup check | **WIP**
+- store keys encrypted / compare hashes for auth
+- ~~Startup check~~
 - Key generation endpoint with permission / auth
 - Error handling / propagation system
 - ~~Rate Limiting~~
-- Request specification (eg. request bulk)
+- ~~Request specification (eg. request bulk)~~
 - Request specific GUID standard
