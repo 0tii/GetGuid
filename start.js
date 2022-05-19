@@ -13,6 +13,7 @@ import { verifyApiKey } from './lib/verify_key.js';
 import { checkRateLimit } from './lib/rate_limit.js';
 import { bootCheck } from './lib/boot_check.js';
 import { createPrivateKey } from 'crypto';
+import cors from 'cors';
 
 //check run requirements
 await bootCheck();
@@ -32,6 +33,8 @@ Middleware section
 - Key Authentication
 - Rate limiting
 */
+
+app.use(cors());
 
 // Key Authentication
 // Header:
