@@ -12,7 +12,6 @@ import cfg from './cfg/config.js';
 import { verifyApiKey } from './lib/verify_key.js';
 import { checkRateLimit } from './lib/rate_limit.js';
 import { bootCheck } from './lib/boot_check.js';
-import { createPrivateKey } from 'crypto';
 import cors from 'cors';
 
 //check run requirements
@@ -33,13 +32,13 @@ Middleware section
 - Key Authentication
 - Rate limiting
 */
-
-app.use(cors());
+if (cfg.allowCORS)
+    app.use(cors());
 
 // Key Authentication
 // Header:
 // [API-Key | value]
-app.use(async (req, res, next) => {
+app.use(async(req, res, next) => {
     switch (await verifyApiKey(req)) {
         case 1:
             next(); //authenticated
@@ -72,7 +71,7 @@ app.use((req, res, next) => {
 Routes
 */
 
-app.get("/guid", async (req, res) => {
+app.get("/guid", async(req, res) => {
     let guid = await generateGuidObject();
 
     if (guid.guid != '-1')
@@ -83,7 +82,7 @@ app.get("/guid", async (req, res) => {
     }
 });
 
-app.get('/guids/:count(*)', async (req, res) => {
+app.get('/guids/:count(*)', async(req, res) => {
     let amount = req.params.count;
     let x;
 
@@ -92,9 +91,9 @@ app.get('/guids/:count(*)', async (req, res) => {
         return res.send({ error: "Invalid parameter - must be an integer." });
     }
 
-    if(amount > cfg.maxGuids){
+    if (amount > cfg.maxGuids) {
         res.status(400);
-        return res.send({error: "Invalid parameter - exceeds allowed maximum"});
+        return res.send({ error: "Invalid parameter - exceeds allowed maximum" });
     }
 
     let guids = await generateMultiGuid(amount);
@@ -107,9 +106,9 @@ app.get('/guids/:count(*)', async (req, res) => {
     }
 });
 
-app.get("(*)", (req, res)=>{
+app.get("(*)", (req, res) => {
     res.status(400);
-    return res.send({error: "Invalid resource. There is nothing here."});
+    return res.send({ error: "Invalid resource. There is nothing here." });
 });
 
 if (cfg.useSSL)
