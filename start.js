@@ -32,7 +32,7 @@ Middleware section
 - Key Authentication
 - Rate limiting
 */
-if (cfg.allowCORS)
+if (cfg.allowCors)
     app.use(cors());
 
 // Key Authentication
@@ -112,9 +112,12 @@ app.get("(*)", (req, res) => {
 });
 
 if (cfg.useSSL)
-    https.createServer({
-        key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
-        cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
-    }, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
+    if(cfg.certFiles)
+        https.createServer({
+            key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
+            cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
+        }, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
+    else
+        https.createServer({}, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
 
 app.listen(cfg.httpPort, () => console.log(`[http] listening on port ${cfg.httpPort}...`));

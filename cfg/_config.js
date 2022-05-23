@@ -12,6 +12,7 @@ export default {
     allowCORS: false,
 
     useSSL: true,
+    certFiles: false,
     privKeyName: '',
     certName: '',
 
