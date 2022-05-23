@@ -38,7 +38,7 @@ if (cfg.allowCors)
 // Key Authentication
 // Header:
 // [API-Key | value]
-app.use(async(req, res, next) => {
+app.use(async (req, res, next) => {
     switch (await verifyApiKey(req)) {
         case 1:
             next(); //authenticated
@@ -71,7 +71,7 @@ app.use((req, res, next) => {
 Routes
 */
 
-app.get("/guid", async(req, res) => {
+app.get("/guid", async (req, res) => {
     let guid = await generateGuidObject();
 
     if (guid.guid != '-1')
@@ -82,7 +82,7 @@ app.get("/guid", async(req, res) => {
     }
 });
 
-app.get('/guids/:count(*)', async(req, res) => {
+app.get('/guids/:count(*)', async (req, res) => {
     let amount = req.params.count;
     let x;
 
@@ -112,12 +112,9 @@ app.get("(*)", (req, res) => {
 });
 
 if (cfg.useSSL)
-    if(cfg.certFiles)
-        https.createServer({
-            key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
-            cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
-        }, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
-    else
-        https.createServer({}, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
+    https.createServer({
+        key: fs.readFileSync(`./sslcert/${cfg.privKeyName}`),
+        cert: fs.readFileSync(`./sslcert/${cfg.certName}`)
+    }, app).listen(cfg.httpsPort, () => console.log(`[https] listening on port ${cfg.httpsPort}...`));
 
 app.listen(cfg.httpPort, () => console.log(`[http] listening on port ${cfg.httpPort}...`));
