@@ -10,6 +10,10 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 *Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*
 
+### Live Test
+
+Head over to [requestdemo.rauhut.me](https://requestdemo.rauhut.me) and test the Demo API!
+
 ## Setup
 
 - Set up the database with the ``/Database/setup.sql`` file in your MySQL console:
