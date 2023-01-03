@@ -8,7 +8,7 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 ``GET`` > [exampleapi.rauhut.me/guid](https://exampleapi.rauhut.me/guid)
 
-~~*Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*~~
+~~*Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*~~\
 *Public api key: `hf8dsfhsdgfs,h9sf8.784gh3x?g!hh.` (Valid until: 01/01/2024 - 00:00:00)*
 
 ### Live Test
