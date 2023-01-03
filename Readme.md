@@ -8,7 +8,8 @@ GetGuid is a bare-bones web api to receive a guaranteed collision-free GUID in l
 
 ``GET`` > [exampleapi.rauhut.me/guid](https://exampleapi.rauhut.me/guid)
 
-*Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*
+~~*Public api key: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD` (Valid until: 01/01/2023 - 00:00:00)*~~
+*Public api key: `hf8dsfhsdgfs,h9sf8.784gh3x?g!hh.` (Valid until: 01/01/2024 - 00:00:00)*
 
 ### Live Test
 
@@ -91,7 +92,7 @@ GET https://localhost:3443/guids/10
 
 ### Authentication
 
-GetGuid now uses API Key authentication. API Keys need to be issued to users before they can use this service. There is a public API Key for the example service I am hosting: `FTVmDN3W4bqgeo6RgGMS1.cST7kLxyBD`.
+GetGuid now uses API Key authentication. API Keys need to be issued to users before they can use this service. There is a public API Key for the example service I am hosting: `hf8dsfhsdgfs,h9sf8.784gh3x?g!hh.`. It will expire on 01/01/2024 at 00:00:00.
 
 Api Keys must be submitted as a `API-Key` header.
 
